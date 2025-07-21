@@ -19,6 +19,8 @@ button:hover { background-color: #555; } /* Adds hover effect to button */
 .project { background-color: #f5f5f5; padding: 10px; border-radius: 5px; animation: slideUp 1s ease-in; position: relative; } /* Styles each project box with slide-up animation */
 .project .delete-btn { position: absolute; top: 5px; right: 5px; background-color: #ff4444; color: white; border: none; padding: 2px 6px; cursor: pointer; } /* Styles delete button */
 .project-list { display: flex; flex-direction: column; gap: 10px; } /* Styles project list with flexbox */
+#weatherSection { margin-top: 20px; } /* Adds space above weather section */
+#weatherInfo { margin-top: 10px; } /* Adds space above weather info */
 @media (max-width: 600px) { /* Applies styles for screens up to 600px */
   body { grid-template-areas: "header" "nav" "main" "footer"; } /* Stacks areas vertically */
   header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */

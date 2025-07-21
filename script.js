@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     const clearContentBtn = document.getElementById("clearContentBtn"); // Gets clear content button
     const addProjectBtn = document.getElementById("addProjectBtn"); // Gets add project button
     const projectList = document.getElementById("projectList"); // Gets project list container
+    const cityInput = document.getElementById("cityInput"); // Gets city input
+    const getWeatherBtn = document.getElementById("getWeatherBtn"); // Gets weather button
+    const weatherInfo = document.getElementById("weatherInfo"); // Gets weather info display
   
     // Load projects from localStorage or use default
     let projects = JSON.parse(localStorage.getItem("projects")) || [
@@ -103,6 +106,26 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       if (title && description) { // If both fields are provided
         projects.push({ title, description });
         renderProjects();
+      }
+    });
+  
+    getWeatherBtn.addEventListener("click", () => { // Listens for weather button click
+      const city = cityInput.value.trim();
+      if (city) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`)
+          .then(response => {
+            if (!response.ok) throw new Error("City not found");
+            return response.json();
+          })
+          .then(data => {
+            weatherInfo.textContent = `Weather in ${data.name}: ${data.main.temp}°C, ${data.weather[0].description}`;
+          })
+          .catch(error => {
+            weatherInfo.textContent = "Error fetching weather data. Please try again.";
+            console.error("Error:", error);
+          });
+      } else {
+        weatherInfo.textContent = "Please enter a city name.";
       }
     });
   });
