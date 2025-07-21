@@ -20,6 +20,7 @@
     button:hover { background-color: #555; } /* Adds hover effect to button */
     .error { color: red; display: none; } /* Hides error message by default */
     .dynamic-content { margin-top: 20px; } /* Styles dynamic content area */
+    .interactive-button { margin: 10px 0; } /* Styles interactive buttons */
     @media (max-width: 600px) { /* Applies styles for screens up to 600px */
       header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
       main { padding: 10px; } /* Reduces main padding */
@@ -55,6 +56,8 @@
       <button type="submit">Send</button> <!-- Submit button -->
     </form>
     <div id="dynamicContent" class="dynamic-content"></div> <!-- Container for dynamic content -->
+    <button id="changeTextBtn" class="interactive-button">Change Text</button> <!-- Button to change text -->
+    <button id="clearContentBtn" class="interactive-button">Clear Content</button> <!-- Button to clear content -->
   </main>
   <footer>
     <p>© 2025 Akhlaq</p> <!-- Footer with copyright -->

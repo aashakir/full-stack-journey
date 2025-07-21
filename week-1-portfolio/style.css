@@ -1,24 +1,23 @@
-/* In styles.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
-  main {
-    padding: 20px;
-  }
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 5px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+/* style.css */
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; } /* Sets font and removes default margins/padding */
+header { background-color: #333; color: white; text-align: center; padding: 10px; } /* Styles header with dark background and centering */
+nav { background-color: #444; padding: 10px; } /* Styles navigation bar */
+nav a { color: white; margin: 0 15px; text-decoration: none; } /* Styles navigation links */
+nav a:hover { text-decoration: underline; } /* Adds hover effect to links */
+main { padding: 20px; } /* Adds padding to main content */
+footer { background-color: #333; color: white; text-align: center; padding: 5px; position: fixed; bottom: 0; width: 100%; } /* Styles footer with fixed position */
+img { max-width: 100%; height: auto; } /* Ensures image is responsive */
+form { margin-top: 20px; } /* Adds space above form */
+label { display: block; margin: 10px 0 5px; } /* Styles labels */
+input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; } /* Styles input fields */
+button { background-color: #444; color: white; padding: 10px; border: none; cursor: pointer; } /* Styles submit button */
+button:hover { background-color: #555; } /* Adds hover effect to button */
+.error { color: red; display: none; } /* Hides error message by default */
+.dynamic-content { margin-top: 20px; } /* Styles dynamic content area */
+.interactive-button { margin: 10px 0; } /* Styles interactive buttons */
+@media (max-width: 600px) { /* Applies styles for screens up to 600px */
+  header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
+  main { padding: 10px; } /* Reduces main padding */
+  footer { position: static; margin-top: 10px; } /* Moves footer to static position */
+  nav a { margin: 0 5px; } /* Reduces link margins on small screens */
+}

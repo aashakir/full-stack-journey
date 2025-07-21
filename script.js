@@ -2,6 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully loaded
     const form = document.getElementById("contactForm"); // Gets form element
     const dynamicContent = document.getElementById("dynamicContent"); // Gets dynamic content container
+    const changeTextBtn = document.getElementById("changeTextBtn"); // Gets change text button
+    const clearContentBtn = document.getElementById("clearContentBtn"); // Gets clear content button
   
     form.addEventListener("submit", (event) => { // Listens for form submission
       event.preventDefault(); // Prevents default form submission
@@ -50,4 +52,15 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       newContent.textContent = "Thank you for your message! I'll get back to you soon."; // Sets text content
       dynamicContent.appendChild(newContent); // Adds paragraph to container
     }
+  
+    changeTextBtn.addEventListener("click", () => { // Listens for change text button click
+      const newText = prompt("Enter new text:"); // Prompts user for new text
+      if (newText) { // If text is provided
+        dynamicContent.innerHTML = `<p>${newText}</p>`; // Updates dynamic content
+      }
+    });
+  
+    clearContentBtn.addEventListener("click", () => { // Listens for clear content button click
+      dynamicContent.innerHTML = ""; // Clears dynamic content
+    });
   });
