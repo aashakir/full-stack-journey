@@ -7,19 +7,24 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     const addProjectBtn = document.getElementById("addProjectBtn"); // Gets add project button
     const projectList = document.getElementById("projectList"); // Gets project list container
   
-    // Initial project data
-    const projects = [
+    // Load projects from localStorage or use default
+    let projects = JSON.parse(localStorage.getItem("projects")) || [
       { title: "NewCenturyApps", description: "A full-stack application built with React and Node.js." },
       { title: "AI Chatbot", description: "An AI-powered chatbot using Google AI Essentials." }
     ];
   
     // Populate initial projects
-    projects.forEach(project => {
-      const projectDiv = document.createElement("div");
-      projectDiv.className = "project";
-      projectDiv.innerHTML = `<h3>${project.title}</h3><p>${project.description}</p>`;
-      projectList.appendChild(projectDiv);
-    });
+    function renderProjects() {
+      projectList.innerHTML = ""; // Clear existing projects
+      projects.forEach(project => {
+        const projectDiv = document.createElement("div");
+        projectDiv.className = "project";
+        projectDiv.innerHTML = `<h3>${project.title}</h3><p>${project.description}</p>`;
+        projectList.appendChild(projectDiv);
+      });
+      localStorage.setItem("projects", JSON.stringify(projects)); // Save to localStorage
+    }
+    renderProjects();
   
     form.addEventListener("submit", (event) => { // Listens for form submission
       event.preventDefault(); // Prevents default form submission
@@ -84,10 +89,8 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const title = prompt("Enter project title:");
       const description = prompt("Enter project description:");
       if (title && description) { // If both fields are provided
-        const projectDiv = document.createElement("div");
-        projectDiv.className = "project";
-        projectDiv.innerHTML = `<h3>${title}</h3><p>${description}</p>`;
-        projectList.appendChild(projectDiv);
+        projects.push({ title, description });
+        renderProjects();
       }
     });
   });
