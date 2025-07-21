@@ -27,13 +27,13 @@
     <form id="contactForm">
       <label for="name">Name:</label> <!-- Label for name input -->
       <input type="text" id="name" name="name" required> <!-- Name input field -->
-      <div id="nameError" class="error">Name is required</div> <!-- Error message for name -->
+      <div id="nameError" class="error">Name is required and must be at least 2 characters</div> <!-- Error message for name -->
       <label for="email">Email:</label> <!-- Label for email input -->
       <input type="email" id="email" name="email" required> <!-- Email input field -->
-      <div id="emailError" class="error">Valid email is required</div> <!-- Error message for email -->
+      <div id="emailError" class="error">Valid email is required (e.g., example@domain.com)</div> <!-- Error message for email -->
       <label for="message">Message:</label> <!-- Label for message input -->
       <textarea id="message" name="message" rows="4" required></textarea> <!-- Message textarea -->
-      <div id="messageError" class="error">Message is required</div> <!-- Error message for message -->
+      <div id="messageError" class="error">Message is required and must be at least 10 characters</div> <!-- Error message for message -->
       <button type="submit">Send</button> <!-- Submit button -->
     </form>
     <div id="dynamicContent" class="dynamic-content"></div> <!-- Container for dynamic content -->

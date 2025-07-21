@@ -50,29 +50,27 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const emailError = document.getElementById("emailError"); // Gets email error element
       const messageError = document.getElementById("messageError"); // Gets message error element
   
-      // Validates name
-      if (name.trim() === "") { // Checks if name is empty
-        nameError.style.display = "block"; // Shows name error
-        isValid = false; // Sets flag to false
+      // Enhanced validation
+      if (name.trim() === "" || name.trim().length < 2) { // Checks name length
+        nameError.style.display = "block";
+        isValid = false;
       } else {
-        nameError.style.display = "none"; // Hides name error
+        nameError.style.display = "none";
       }
   
-      // Validates email
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
-      if (!emailPattern.test(email)) { // Checks if email is valid
-        emailError.style.display = "block"; // Shows email error
-        isValid = false; // Sets flag to false
+      if (!emailPattern.test(email)) { // Checks email format
+        emailError.style.display = "block";
+        isValid = false;
       } else {
-        emailError.style.display = "none"; // Hides email error
+        emailError.style.display = "none";
       }
   
-      // Validates message
-      if (message.trim() === "") { // Checks if message is empty
-        messageError.style.display = "block"; // Shows message error
-        isValid = false; // Sets flag to false
+      if (message.trim() === "" || message.trim().length < 10) { // Checks message length
+        messageError.style.display = "block";
+        isValid = false;
       } else {
-        messageError.style.display = "none"; // Hides message error
+        messageError.style.display = "none";
       }
   
       if (isValid) { // If all validations pass
