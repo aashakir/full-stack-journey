@@ -9,6 +9,7 @@
 <body>
   <header>
     <h1>Akhlaq's Portfolio</h1> <!-- Main heading -->
+    <button id="themeToggle" class="interactive-button">Toggle Theme</button> <!-- Theme toggle button -->
   </header>
   <nav>
     <a href="#home">Home</a> <!-- Link to home section -->
@@ -16,7 +17,7 @@
     <a href="#contact">Contact</a> <!-- Link to contact section -->
   </nav>
   <main>
-    <img src="images/Profile.png" alt="Akhlaq's profile picture"> <!-- Profile image -->
+    <img src="images/Profile.png" alt="Akhlaq's profile picture" loading="lazy"> <!-- Profile image with lazy loading -->
     <p>My full-stack web development journey</p> <!-- Main content -->
     <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a> <!-- Link to LinkedIn -->
     <a href="https://github.com/aashakir">GitHub</a> <!-- Link to GitHub -->
@@ -37,61 +38,8 @@
       <button type="submit">Send</button> <!-- Submit button -->
     </form>
     <div id="dynamicContent" class="dynamic-content"></div> <!-- Container for dynamic content -->
-    <div id="weatherSection"><!DOCTYPE html> <!-- Declares HTML5 document -->
-      <html lang="en"> <!-- Sets language to English -->
-      <head>
-        <meta charset="UTF-8"> <!-- Sets character encoding -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive viewport -->
-        <title>Akhlaq's Portfolio</title> <!-- Sets page title -->
-        <link rel="stylesheet" href="style.css"> <!-- Links to external CSS file -->
-      </head>
-      <body>
-        <header>
-          <h1>Akhlaq's Portfolio</h1> <!-- Main heading -->
-        </header>
-        <nav>
-          <a href="#home">Home</a> <!-- Link to home section -->
-          <a href="#about">About</a> <!-- Link to about section -->
-          <a href="#contact">Contact</a> <!-- Link to contact section -->
-        </nav>
-        <main>
-          <img src="images/Profile.png" alt="Akhlaq's profile picture" loading="lazy"> <!-- Profile image with lazy loading -->
-          <p>My full-stack web development journey</p> <!-- Main content -->
-          <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a> <!-- Link to LinkedIn -->
-          <a href="https://github.com/aashakir">GitHub</a> <!-- Link to GitHub -->
-          <section id="projects" class="projects-section">
-            <h2>Projects</h2> <!-- Projects section heading -->
-            <div id="projectList" class="project-list"></div> <!-- Container for dynamic project list -->
-          </section>
-          <form id="contactForm">
-            <label for="name">Name:</label> <!-- Label for name input -->
-            <input type="text" id="name" name="name" required> <!-- Name input field -->
-            <div id="nameError" class="error">Name is required and must be at least 2 characters</div> <!-- Error message for name -->
-            <label for="email">Email:</label> <!-- Label for email input -->
-            <input type="email" id="email" name="email" required> <!-- Email input field -->
-            <div id="emailError" class="error">Valid email is required (e.g., example@domain.com)</div> <!-- Error message for email -->
-            <label for="message">Message:</label> <!-- Label for message input -->
-            <textarea id="message" name="message" rows="4" required></textarea> <!-- Message textarea -->
-            <div id="messageError" class="error">Message is required and must be at least 10 characters</div> <!-- Error message for message -->
-            <button type="submit">Send</button> <!-- Submit button -->
-          </form>
-          <div id="dynamicContent" class="dynamic-content"></div> <!-- Container for dynamic content -->
-          <div id="weatherSection">
-            <h2>Current Weather</h2>
-            <input type="text" id="cityInput" placeholder="Enter city name">
-            <button id="getWeatherBtn" class="interactive-button">Get Weather</button>
-            <p id="weatherInfo"></p>
-          </div>
-          <button id="changeTextBtn" class="interactive-button">Change Text</button> <!-- Button to change text -->
-          <button id="clearContentBtn" class="interactive-button">Clear Content</button> <!-- Button to clear content -->
-          <button id="addProjectBtn" class="interactive-button">Add Project</button> <!-- Button to add project -->
-        </main>
-        <footer>
-          <p>© 2025 Akhlaq</p> <!-- Footer with copyright -->
-        </footer>
-        <script src="script.js"></script> <!-- Links to external JavaScript file -->
-      </body>
-      </html>      <h2>Current Weather</h2>
+    <div id="weatherSection">
+      <h2>Current Weather</h2>
       <input type="text" id="cityInput" placeholder="Enter city name">
       <button id="getWeatherBtn" class="interactive-button">Get Weather</button>
       <p id="weatherInfo"></p>

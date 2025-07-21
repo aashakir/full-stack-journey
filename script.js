@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     const cityInput = document.getElementById("cityInput"); // Gets city input
     const getWeatherBtn = document.getElementById("getWeatherBtn"); // Gets weather button
     const weatherInfo = document.getElementById("weatherInfo"); // Gets weather info display
+    const themeToggle = document.getElementById("themeToggle"); // Gets theme toggle button
+  
+    // Load theme from localStorage or default to light
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.className = `${savedTheme}-theme`;
+    if (savedTheme === "dark") themeToggle.textContent = "Switch to Light Theme";
+    else themeToggle.textContent = "Switch to Dark Theme";
   
     // Load projects from localStorage or use default
     let projects = JSON.parse(localStorage.getItem("projects")) || [
@@ -21,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       projectList.innerHTML = ""; // Clear existing projects
       projects.forEach((project, index) => {
         const projectDiv = document.createElement("div");
-        projectDiv.className = "project";
+        projectDiv.className = `project ${document.body.className}`;
         projectDiv.innerHTML = `<h3>${project.title}</h3><p>${project.description}</p>`;
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "delete-btn";
@@ -127,5 +134,18 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       } else {
         weatherInfo.textContent = "Please enter a city name.";
       }
+    });
+  
+    themeToggle.addEventListener("click", () => { // Listens for theme toggle button click
+      if (document.body.className === "light-theme") {
+        document.body.className = "dark-theme";
+        themeToggle.textContent = "Switch to Light Theme";
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.body.className = "light-theme";
+        themeToggle.textContent = "Switch to Dark Theme";
+        localStorage.setItem("theme", "light");
+      }
+      renderProjects(); // Re-render projects with new theme
     });
   });

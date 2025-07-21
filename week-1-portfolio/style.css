@@ -1,22 +1,34 @@
 /* style.css */
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: grid; grid-template-areas: "header" "nav" "main" "footer"; min-height: 100vh; } /* Sets font, removes margins, uses Grid layout */
-header { background-color: #333; color: white; text-align: center; padding: 10px; grid-area: header; animation: fadeIn 1s ease-in; } /* Styles header with fade-in animation */
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: grid; grid-template-areas: "header" "nav" "main" "footer"; min-height: 100vh; transition: background-color 0.3s, color 0.3s; } /* Sets font, removes margins, uses Grid layout with transition */
+body.dark-theme { background-color: #1a1a1a; color: #fff; } /* Dark theme styles */
+body.light-theme { background-color: #fff; color: #000; } /* Light theme styles */
+header { background-color: #333; color: white; text-align: center; padding: 10px; grid-area: header; animation: fadeIn 1s ease-in; display: flex; justify-content: center; align-items: center; gap: 10px; } /* Styles header with flex for toggle */
+header.dark-theme { background-color: #444; } /* Dark theme header */
+header.light-theme { background-color: #e0e0e0; color: #000; } /* Light theme header */
 nav { background-color: #444; padding: 10px; grid-area: nav; } /* Styles navigation bar with Grid area */
 nav a { color: white; margin: 0 15px; text-decoration: none; } /* Styles navigation links */
 nav a:hover { text-decoration: underline; } /* Adds hover effect to links */
+nav.dark-theme { background-color: #555; } /* Dark theme nav */
+nav.light-theme { background-color: #ccc; } /* Light theme nav */
+nav.light-theme a { color: #000; } /* Light theme nav links */
 main { padding: 20px; grid-area: main; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } /* Styles main with Grid for two columns */
 footer { background-color: #333; color: white; text-align: center; padding: 5px; grid-area: footer; } /* Styles footer with Grid area */
-img { max-width: 100%; height: auto; margin-bottom: 20px; animation: slideIn 1s ease-out; } /* Ensures image is responsive with slide-in animation */
+footer.dark-theme { background-color: #444; } /* Dark theme footer */
+footer.light-theme { background-color: #e0e0e0; color: #000; } /* Light theme footer */
+img { max-width: 50%; height: auto; margin-bottom: 20px; animation: slideIn 1s ease-out; } /* Reduced profile image size for decent appearance with lazy loading */
 form { margin-top: 20px; width: 100%; } /* Adds space above form */
 label { display: block; margin: 10px 0 5px; } /* Styles labels */
 input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; } /* Styles input fields */
 button { background-color: #444; color: white; padding: 10px; border: none; cursor: pointer; animation: bounceIn 0.5s ease-out; } /* Styles submit button with bounce animation */
 button:hover { background-color: #555; } /* Adds hover effect to button */
+button.light-theme { background-color: #666; color: #fff; } /* Light theme button */
+button.light-theme:hover { background-color: #888; } /* Light theme button hover */
 .error { color: red; display: none; } /* Hides error message by default */
 .dynamic-content { margin-top: 20px; } /* Styles dynamic content area */
 .interactive-button { margin: 10px 0; animation: fadeIn 1s ease-in; } /* Styles interactive buttons with fade-in animation */
 .projects-section { margin-top: 20px; } /* Adds space above projects section */
 .project { background-color: #f5f5f5; padding: 10px; border-radius: 5px; animation: slideUp 1s ease-in; position: relative; } /* Styles each project box with slide-up animation */
+.project.dark-theme { background-color: #2a2a2a; color: #fff; } /* Dark theme project */
 .project .delete-btn { position: absolute; top: 5px; right: 5px; background-color: #ff4444; color: white; border: none; padding: 2px 6px; cursor: pointer; } /* Styles delete button */
 .project-list { display: flex; flex-direction: column; gap: 10px; } /* Styles project list with flexbox */
 #weatherSection { margin-top: 20px; } /* Adds space above weather section */
