@@ -19,6 +19,7 @@
     button { background-color: #444; color: white; padding: 10px; border: none; cursor: pointer; } /* Styles submit button */
     button:hover { background-color: #555; } /* Adds hover effect to button */
     .error { color: red; display: none; } /* Hides error message by default */
+    .dynamic-content { margin-top: 20px; } /* Styles dynamic content area */
     @media (max-width: 600px) { /* Applies styles for screens up to 600px */
       header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
       main { padding: 10px; } /* Reduces main padding */
@@ -53,6 +54,7 @@
       <div id="messageError" class="error">Message is required</div> <!-- Error message for message -->
       <button type="submit">Send</button> <!-- Submit button -->
     </form>
+    <div id="dynamicContent" class="dynamic-content"></div> <!-- Container for dynamic content -->
   </main>
   <footer>
     <p>© 2025 Akhlaq</p> <!-- Footer with copyright -->
@@ -96,8 +98,16 @@
       if (isValid) { // If all validations pass
         alert("Form submitted successfully!"); // Shows success alert
         document.getElementById("contactForm").reset(); // Resets form
+        addDynamicContent(); // Calls function to add dynamic content
       }
       return isValid; // Returns validation result
+    }
+
+    function addDynamicContent() { // Adds dynamic content
+      const dynamicContent = document.getElementById("dynamicContent"); // Gets dynamic content container
+      const newContent = document.createElement("p"); // Creates new paragraph element
+      newContent.textContent = "Thank you for your message! I'll get back to you soon."; // Sets text content
+      dynamicContent.appendChild(newContent); // Adds paragraph to container
     }
   </script>
 </body>
