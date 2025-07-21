@@ -1,12 +1,31 @@
-<!DOCTYPE html>
-     <html lang="en">
-     <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Akhlaq's Portfolio</title>
-     </head>
-     <body>
-       <h1>Akhlaq's Portfolio</h1>
-       <p>My full-stack web development journey</p>
-     </body>
-     </html>
+
+<!DOCTYPE html> <!-- Declares HTML5 document -->
+<html lang="en"> <!-- Sets language to English -->
+<head>
+  <meta charset="UTF-8"> <!-- Sets character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive viewport -->
+  <title>Akhlaq's Portfolio</title> <!-- Sets page title -->
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; } /* Sets font and removes default margins/padding */
+    header { background-color: #333; color: white; text-align: center; padding: 10px; } /* Styles header with dark background and centering */
+    main { padding: 20px; } /* Adds padding to main content */
+    footer { background-color: #333; color: white; text-align: center; padding: 5px; position: fixed; bottom: 0; width: 100%; } /* Styles footer with fixed position */
+    @media (max-width: 600px) { /* Applies styles for screens up to 600px */
+      header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
+      main { padding: 10px; } /* Reduces main padding */
+      footer { position: static; margin-top: 10px; } /* Moves footer to static position */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Akhlaq's Portfolio</h1> <!-- Main heading -->
+  </header>
+  <main>
+    <p>My full-stack web development journey</p> <!-- Main content -->
+  </main>
+  <footer>
+    <p>© 2025 Akhlaq</p> <!-- Footer with copyright -->
+  </footer>
+</body>
+</html>
