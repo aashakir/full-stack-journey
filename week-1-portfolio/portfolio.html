@@ -42,7 +42,7 @@
     <p>My full-stack web development journey</p> <!-- Main content -->
     <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a> <!-- Link to LinkedIn -->
     <a href="https://github.com/aashakir">GitHub</a> <!-- Link to GitHub -->
-    <form id="contactForm" onsubmit="return validateForm(event)">
+    <form id="contactForm">
       <label for="name">Name:</label> <!-- Label for name input -->
       <input type="text" id="name" name="name" required> <!-- Name input field -->
       <div id="nameError" class="error">Name is required</div> <!-- Error message for name -->
@@ -59,56 +59,6 @@
   <footer>
     <p>© 2025 Akhlaq</p> <!-- Footer with copyright -->
   </footer>
-  <script>
-    function validateForm(event) { // Validates form on submit
-      event.preventDefault(); // Prevents default form submission
-      let isValid = true; // Sets initial validation flag
-      const name = document.getElementById("name").value; // Gets name input value
-      const email = document.getElementById("email").value; // Gets email input value
-      const message = document.getElementById("message").value; // Gets message input value
-      const nameError = document.getElementById("nameError"); // Gets name error element
-      const emailError = document.getElementById("emailError"); // Gets email error element
-      const messageError = document.getElementById("messageError"); // Gets message error element
-
-      // Validates name
-      if (name.trim() === "") { // Checks if name is empty
-        nameError.style.display = "block"; // Shows name error
-        isValid = false; // Sets flag to false
-      } else {
-        nameError.style.display = "none"; // Hides name error
-      }
-
-      // Validates email
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
-      if (!emailPattern.test(email)) { // Checks if email is valid
-        emailError.style.display = "block"; // Shows email error
-        isValid = false; // Sets flag to false
-      } else {
-        emailError.style.display = "none"; // Hides email error
-      }
-
-      // Validates message
-      if (message.trim() === "") { // Checks if message is empty
-        messageError.style.display = "block"; // Shows message error
-        isValid = false; // Sets flag to false
-      } else {
-        messageError.style.display = "none"; // Hides message error
-      }
-
-      if (isValid) { // If all validations pass
-        alert("Form submitted successfully!"); // Shows success alert
-        document.getElementById("contactForm").reset(); // Resets form
-        addDynamicContent(); // Calls function to add dynamic content
-      }
-      return isValid; // Returns validation result
-    }
-
-    function addDynamicContent() { // Adds dynamic content
-      const dynamicContent = document.getElementById("dynamicContent"); // Gets dynamic content container
-      const newContent = document.createElement("p"); // Creates new paragraph element
-      newContent.textContent = "Thank you for your message! I'll get back to you soon."; // Sets text content
-      dynamicContent.appendChild(newContent); // Adds paragraph to container
-    }
-  </script>
+  <script src="script.js"></script> <!-- Links to external JavaScript file -->
 </body>
 </html>
