@@ -1,13 +1,13 @@
 /* style.css */
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; } /* Sets font, removes margins, uses Flexbox for full height */
-header { background-color: #333; color: white; text-align: center; padding: 10px; } /* Styles header with dark background and centering */
-nav { background-color: #444; padding: 10px; } /* Styles navigation bar */
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: grid; grid-template-areas: "header" "nav" "main" "footer"; min-height: 100vh; } /* Sets font, removes margins, uses Grid layout */
+header { background-color: #333; color: white; text-align: center; padding: 10px; grid-area: header; } /* Styles header with Grid area */
+nav { background-color: #444; padding: 10px; grid-area: nav; } /* Styles navigation bar with Grid area */
 nav a { color: white; margin: 0 15px; text-decoration: none; } /* Styles navigation links */
 nav a:hover { text-decoration: underline; } /* Adds hover effect to links */
-main { padding: 20px; flex: 1; display: flex; flex-direction: column; align-items: center; } /* Makes main flexible with centered items */
-footer { background-color: #333; color: white; text-align: center; padding: 5px; } /* Styles footer */
+main { padding: 20px; grid-area: main; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } /* Styles main with Grid for two columns */
+footer { background-color: #333; color: white; text-align: center; padding: 5px; grid-area: footer; } /* Styles footer with Grid area */
 img { max-width: 100%; height: auto; margin-bottom: 20px; } /* Ensures image is responsive with margin */
-form { margin-top: 20px; width: 100%; max-width: 400px; } /* Adds space above form with max width */
+form { margin-top: 20px; width: 100%; } /* Adds space above form */
 label { display: block; margin: 10px 0 5px; } /* Styles labels */
 input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; } /* Styles input fields */
 button { background-color: #444; color: white; padding: 10px; border: none; cursor: pointer; } /* Styles submit button */
@@ -16,8 +16,9 @@ button:hover { background-color: #555; } /* Adds hover effect to button */
 .dynamic-content { margin-top: 20px; } /* Styles dynamic content area */
 .interactive-button { margin: 10px 0; } /* Styles interactive buttons */
 @media (max-width: 600px) { /* Applies styles for screens up to 600px */
+  body { grid-template-areas: "header" "nav" "main" "footer"; } /* Stacks areas vertically */
   header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
-  main { padding: 10px; } /* Reduces main padding */
+  main { grid-template-columns: 1fr; padding: 10px; } /* Switches to single column */
   footer { margin-top: 10px; } /* Adds margin to footer */
   nav a { margin: 0 5px; } /* Reduces link margins on small screens */
 }
