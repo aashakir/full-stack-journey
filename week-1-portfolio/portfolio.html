@@ -13,6 +13,11 @@
     main { padding: 20px; } /* Adds padding to main content */
     footer { background-color: #333; color: white; text-align: center; padding: 5px; position: fixed; bottom: 0; width: 100%; } /* Styles footer with fixed position */
     img { max-width: 100%; height: auto; } /* Ensures image is responsive */
+    form { margin-top: 20px; } /* Adds space above form */
+    label { display: block; margin: 10px 0 5px; } /* Styles labels */
+    input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; } /* Styles input fields */
+    button { background-color: #444; color: white; padding: 10px; border: none; cursor: pointer; } /* Styles submit button */
+    button:hover { background-color: #555; } /* Adds hover effect to button */
     @media (max-width: 600px) { /* Applies styles for screens up to 600px */
       header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
       main { padding: 10px; } /* Reduces main padding */
@@ -35,6 +40,15 @@
     <p>My full-stack web development journey</p> <!-- Main content -->
     <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a> <!-- Link to LinkedIn -->
     <a href="https://github.com/aashakir">GitHub</a> <!-- Link to GitHub -->
+    <form>
+      <label for="name">Name:</label> <!-- Label for name input -->
+      <input type="text" id="name" name="name" required> <!-- Name input field -->
+      <label for="email">Email:</label> <!-- Label for email input -->
+      <input type="email" id="email" name="email" required> <!-- Email input field -->
+      <label for="message">Message:</label> <!-- Label for message input -->
+      <textarea id="message" name="message" rows="4" required></textarea> <!-- Message textarea -->
+      <button type="submit">Send</button> <!-- Submit button -->
+    </form>
   </main>
   <footer>
     <p>© 2025 Akhlaq</p> <!-- Footer with copyright -->
