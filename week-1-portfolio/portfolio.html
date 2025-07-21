@@ -1,4 +1,3 @@
-
 <!DOCTYPE html> <!-- Declares HTML5 document -->
 <html lang="en"> <!-- Sets language to English -->
 <head>
@@ -8,12 +7,16 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; } /* Sets font and removes default margins/padding */
     header { background-color: #333; color: white; text-align: center; padding: 10px; } /* Styles header with dark background and centering */
+    nav { background-color: #444; padding: 10px; } /* Styles navigation bar */
+    nav a { color: white; margin: 0 15px; text-decoration: none; } /* Styles navigation links */
+    nav a:hover { text-decoration: underline; } /* Adds hover effect to links */
     main { padding: 20px; } /* Adds padding to main content */
     footer { background-color: #333; color: white; text-align: center; padding: 5px; position: fixed; bottom: 0; width: 100%; } /* Styles footer with fixed position */
     @media (max-width: 600px) { /* Applies styles for screens up to 600px */
       header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
       main { padding: 10px; } /* Reduces main padding */
       footer { position: static; margin-top: 10px; } /* Moves footer to static position */
+      nav a { margin: 0 5px; } /* Reduces link margins on small screens */
     }
   </style>
 </head>
@@ -21,6 +24,11 @@
   <header>
     <h1>Akhlaq's Portfolio</h1> <!-- Main heading -->
   </header>
+  <nav>
+    <a href="#home">Home</a> <!-- Link to home section -->
+    <a href="#about">About</a> <!-- Link to about section -->
+    <a href="#contact">Contact</a> <!-- Link to contact section -->
+  </nav>
   <main>
     <p>My full-stack web development journey</p> <!-- Main content -->
   </main>
