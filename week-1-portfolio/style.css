@@ -23,4 +23,9 @@ button:hover { background-color: #555; } /* Adds hover effect to button */
   main { grid-template-columns: 1fr; padding: 10px; } /* Switches to single column */
   footer { margin-top: 10px; } /* Adds margin to footer */
   nav a { margin: 0 5px; } /* Reduces link margins on small screens */
+  img { max-width: 80%; margin: 0 auto; display: block; } /* Centers and reduces image size */
+}
+@media (min-width: 601px) and (max-width: 900px) { /* Applies styles for medium screens */
+  main { grid-template-columns: 1fr; } /* Switches to single column */
+  img { max-width: 50%; margin: 0 auto; display: block; } /* Centers and reduces image size */
 }
