@@ -33,6 +33,7 @@ button.light-theme:hover { background-color: #888; } /* Light theme button hover
 .project-list { display: flex; flex-direction: column; gap: 10px; } /* Styles project list with flexbox */
 #weatherSection { margin-top: 20px; } /* Adds space above weather section */
 #weatherInfo { margin-top: 10px; } /* Adds space above weather info */
+#searchInput { width: 100%; padding: 8px; margin-bottom: 10px; } /* Styles search input */
 @media (max-width: 600px) { /* Applies styles for screens up to 600px */
   body { grid-template-areas: "header" "nav" "main" "footer"; } /* Stacks areas vertically */
   header { padding: 5px; font-size: 1.2em; } /* Adjusts header padding and font size */
