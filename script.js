@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
 
   // Load projects from localStorage or use default
   let projects = JSON.parse(localStorage.getItem("projects")) || [
-    { title: "NewCenturyApps", description: "A full-stack application built with React and Node.js." },
-    { title: "AI Chatbot", description: "An AI-powered chatbot using Google AI Essentials." }
+    { title: "NewCenturyApps", description: "A full-stack application built with React and Node.js.", category: "Web Development" },
+    { title: "AI Chatbot", description: "An AI-powered chatbot using Google AI Essentials.", category: "AI" }
   ];
 
   // Populate initial projects with delete and edit buttons
@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     projectList.innerHTML = ""; // Clear existing projects
     let filteredProjects = projects.filter(project =>
       project.title.toLowerCase().includes(filter.toLowerCase()) ||
-      project.description.toLowerCase().includes(filter.toLowerCase())
+      project.description.toLowerCase().includes(filter.toLowerCase()) ||
+      project.category.toLowerCase().includes(filter.toLowerCase())
     );
     if (sorted) {
       filteredProjects.sort((a, b) => a.title.localeCompare(b.title));
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     filteredProjects.forEach((project, index) => {
       const projectDiv = document.createElement("div");
       projectDiv.className = `project ${document.body.className}`;
-      projectDiv.innerHTML = `<h3>${project.title}</h3><p>${project.description}</p>`;
+      projectDiv.innerHTML = `<h3>${project.title}</h3><p>${project.description}</p><p><strong>Category:</strong> ${project.category}</p>`;
       const deleteBtn = document.createElement("button");
       deleteBtn.className = "delete-btn";
       deleteBtn.textContent = "Delete";
@@ -66,8 +67,9 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const project = projects[index];
       const newTitle = prompt("Edit project title:", project.title);
       const newDescription = prompt("Edit project description:", project.description);
-      if (newTitle && newDescription) {
-        projects[index] = { title: newTitle, description: newDescription };
+      const newCategory = prompt("Edit project category:", project.category);
+      if (newTitle && newDescription && newCategory) {
+        projects[index] = { title: newTitle, description: newDescription, category: newCategory };
         renderProjects(searchInput.value); // Re-render with current search filter
       }
     }
@@ -133,8 +135,9 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
   addProjectBtn.addEventListener("click", () => { // Listens for add project button click
     const title = prompt("Enter project title:");
     const description = prompt("Enter project description:");
-    if (title && description) { // If both fields are provided
-      projects.push({ title, description });
+    const category = prompt("Enter project category:");
+    if (title && description && category) { // If all fields are provided
+      projects.push({ title, description, category });
       renderProjects(searchInput.value); // Re-render with current search filter
     }
   });
