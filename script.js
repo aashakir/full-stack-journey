@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
   const weatherInfo = document.getElementById("weatherInfo"); // Gets weather info display
   const themeToggle = document.getElementById("themeToggle"); // Gets theme toggle button
   const searchInput = document.getElementById("searchInput"); // Gets search input
+  const sortBtn = document.getElementById("sortBtn"); // Gets sort button
 
   // Load theme from localStorage or default to light
   const savedTheme = localStorage.getItem("theme") || "light";
@@ -25,12 +26,15 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
   ];
 
   // Populate initial projects with delete buttons
-  function renderProjects(filter = "") {
+  function renderProjects(filter = "", sorted = false) {
     projectList.innerHTML = ""; // Clear existing projects
-    const filteredProjects = projects.filter(project =>
+    let filteredProjects = projects.filter(project =>
       project.title.toLowerCase().includes(filter.toLowerCase()) ||
       project.description.toLowerCase().includes(filter.toLowerCase())
     );
+    if (sorted) {
+      filteredProjects.sort((a, b) => a.title.localeCompare(b.title));
+    }
     filteredProjects.forEach((project, index) => {
       const projectDiv = document.createElement("div");
       projectDiv.className = `project ${document.body.className}`;
@@ -156,5 +160,9 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
 
   searchInput.addEventListener("input", () => { // Listens for search input changes
     renderProjects(searchInput.value); // Re-render projects with search filter
+  });
+
+  sortBtn.addEventListener("click", () => { // Listens for sort button click
+    renderProjects(searchInput.value, true); // Re-render with sorting
   });
 });
