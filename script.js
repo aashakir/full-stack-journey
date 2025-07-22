@@ -1,18 +1,25 @@
 // script.js
-document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully loaded
-  const form = document.getElementById("contactForm"); // Gets form element
-  const dynamicContent = document.getElementById("dynamicContent"); // Gets dynamic content container
-  const changeTextBtn = document.getElementById("changeTextBtn"); // Gets change text button
-  const clearContentBtn = document.getElementById("clearContentBtn"); // Gets clear content button
-  const addProjectBtn = document.getElementById("addProjectBtn"); // Gets add project button
-  const projectList = document.getElementById("projectList"); // Gets project list container
-  const cityInput = document.getElementById("cityInput"); // Gets city input
-  const getWeatherBtn = document.getElementById("getWeatherBtn"); // Gets weather button
-  const weatherInfo = document.getElementById("weatherInfo"); // Gets weather info display
-  const themeToggle = document.getElementById("themeToggle"); // Gets theme toggle button
-  const searchInput = document.getElementById("searchInput"); // Gets search input
-  const sortBtn = document.getElementById("sortBtn"); // Gets sort button
-  const categoryFilter = document.getElementById("categoryFilter"); // Gets category filter dropdown
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const dynamicContent = document.getElementById("dynamicContent");
+  const changeTextBtn = document.getElementById("changeTextBtn");
+  const clearContentBtn = document.getElementById("clearContentBtn");
+  const addProjectBtn = document.getElementById("addProjectBtn");
+  const projectList = document.getElementById("projectList");
+  const cityInput = document.getElementById("cityInput");
+  const getWeatherBtn = document.getElementById("getWeatherBtn");
+  const weatherInfo = document.getElementById("weatherInfo");
+  const themeToggle = document.getElementById("themeToggle");
+  const searchInput = document.getElementById("searchInput");
+  const sortBtn = document.getElementById("sortBtn");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  // Navigation toggle
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
 
   // Load theme from localStorage or default to light
   const savedTheme = localStorage.getItem("theme") || "light";
@@ -41,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
 
   // Populate initial projects with delete and edit buttons
   function renderProjects(filter = "", sorted = false, category = "") {
-    projectList.innerHTML = ""; // Clear existing projects
+    projectList.innerHTML = "";
     let filteredProjects = projects.filter(project =>
       (project.title.toLowerCase().includes(filter.toLowerCase()) ||
       project.description.toLowerCase().includes(filter.toLowerCase()) ||
@@ -58,16 +65,16 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const deleteBtn = document.createElement("button");
       deleteBtn.className = "delete-btn";
       deleteBtn.textContent = "Delete";
-      deleteBtn.dataset.index = index; // Store index for deletion
+      deleteBtn.dataset.index = index;
       const editBtn = document.createElement("button");
       editBtn.className = "edit-btn";
       editBtn.textContent = "Edit";
-      editBtn.dataset.index = index; // Store index for editing
+      editBtn.dataset.index = index;
       projectDiv.appendChild(deleteBtn);
       projectDiv.appendChild(editBtn);
       projectList.appendChild(projectDiv);
     });
-    localStorage.setItem("projects", JSON.stringify(projects)); // Save to localStorage
+    localStorage.setItem("projects", JSON.stringify(projects));
   }
   renderProjects();
 
@@ -75,9 +82,9 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
   projectList.addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
       const index = event.target.dataset.index;
-      projects.splice(index, 1); // Remove project from array
-      renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
-      updateCategoryFilter(); // Update category filter after deletion
+      projects.splice(index, 1);
+      renderProjects(searchInput.value, false, categoryFilter.value);
+      updateCategoryFilter();
     } else if (event.target.classList.contains("edit-btn")) {
       const index = event.target.dataset.index;
       const project = projects[index];
@@ -86,81 +93,80 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const newCategory = prompt("Edit project category:", project.category);
       if (newTitle && newDescription && newCategory) {
         projects[index] = { title: newTitle, description: newDescription, category: newCategory };
-        renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
-        updateCategoryFilter(); // Update category filter after editing
+        renderProjects(searchInput.value, false, categoryFilter.value);
+        updateCategoryFilter();
       }
     }
   });
 
-  form.addEventListener("submit", (event) => { // Listens for form submission
-    event.preventDefault(); // Prevents default form submission
-    let isValid = true; // Sets initial validation flag
-    const name = document.getElementById("name").value; // Gets name input value
-    const email = document.getElementById("email").value; // Gets email input value
-    const message = document.getElementById("message").value; // Gets message input value
-    const nameError = document.getElementById("nameError"); // Gets name error element
-    const emailError = document.getElementById("emailError"); // Gets email error element
-    const messageError = document.getElementById("messageError"); // Gets message error element
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let isValid = true;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const messageError = document.getElementById("messageError");
 
-    // Enhanced validation
-    if (name.trim() === "" || name.trim().length < 2) { // Checks name length
+    if (name.trim() === "" || name.trim().length < 2) {
       nameError.style.display = "block";
       isValid = false;
     } else {
       nameError.style.display = "none";
     }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
-    if (!emailPattern.test(email)) { // Checks email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
       emailError.style.display = "block";
       isValid = false;
     } else {
       emailError.style.display = "none";
     }
 
-    if (message.trim() === "" || message.trim().length < 10) { // Checks message length
+    if (message.trim() === "" || message.trim().length < 10) {
       messageError.style.display = "block";
       isValid = false;
     } else {
       messageError.style.display = "none";
     }
 
-    if (isValid) { // If all validations pass
-      alert("Form submitted successfully!"); // Shows success alert
-      form.reset(); // Resets form
-      addDynamicContent(); // Calls function to add dynamic content
+    if (isValid) {
+      alert("Form submitted successfully!");
+      form.reset();
+      addDynamicContent();
     }
   });
 
-  function addDynamicContent() { // Adds dynamic content
-    const newContent = document.createElement("p"); // Creates new paragraph element
-    newContent.textContent = "Thank you for your message! I'll get back to you soon."; // Sets text content
-    dynamicContent.appendChild(newContent); // Adds paragraph to container
+  function addDynamicContent() {
+    const newContent = document.createElement("p");
+    newContent.textContent = "Thank you for your message! I'll get back to you soon.";
+    dynamicContent.appendChild(newContent);
   }
 
-  changeTextBtn.addEventListener("click", () => { // Listens for change text button click
-    const newText = prompt("Enter new text:"); // Prompts user for new text
-    if (newText) { // If text is provided
-      dynamicContent.innerHTML = `<p>${newText}</p>`; // Updates dynamic content
+  changeTextBtn.addEventListener("click", () => {
+    const newText = prompt("Enter new text:");
+    if (newText) {
+      dynamicContent.innerHTML = `<p>${newText}</p>`;
     }
   });
 
-  clearContentBtn.addEventListener("click", () => { // Listens for clear content button click
-    dynamicContent.innerHTML = ""; // Clears dynamic content
+  clearContentBtn.addEventListener("click", () => {
+    dynamicContent.innerHTML = "";
   });
 
-  addProjectBtn.addEventListener("click", () => { // Listens for add project button click
+  addProjectBtn.addEventListener("click", () => {
     const title = prompt("Enter project title:");
     const description = prompt("Enter project description:");
     const category = prompt("Enter project category:");
-    if (title && description && category) { // If all fields are provided
+    if (title && description && category) {
       projects.push({ title, description, category });
-      renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
-      updateCategoryFilter(); // Update category filter after adding
+      renderProjects(searchInput.value, false, categoryFilter.value);
+      updateCategoryFilter();
     }
   });
 
-  getWeatherBtn.addEventListener("click", () => { // Listens for weather button click
+  getWeatherBtn.addEventListener("click", () => {
     const city = cityInput.value.trim();
     if (city) {
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`)
@@ -180,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     }
   });
 
-  themeToggle.addEventListener("click", () => { // Listens for theme toggle button click
+  themeToggle.addEventListener("click", () => {
     if (document.body.className === "light-theme") {
       document.body.className = "dark-theme";
       themeToggle.textContent = "Switch to Light Theme";
@@ -190,18 +196,18 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       themeToggle.textContent = "Switch to Dark Theme";
       localStorage.setItem("theme", "light");
     }
-    renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
+    renderProjects(searchInput.value, false, categoryFilter.value);
   });
 
-  searchInput.addEventListener("input", () => { // Listens for search input changes
-    renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
+  searchInput.addEventListener("input", () => {
+    renderProjects(searchInput.value, false, categoryFilter.value);
   });
 
-  sortBtn.addEventListener("click", () => { // Listens for sort button click
-    renderProjects(searchInput.value, true, categoryFilter.value); // Re-render with sorting and current filters
+  sortBtn.addEventListener("click", () => {
+    renderProjects(searchInput.value, true, categoryFilter.value);
   });
 
-  categoryFilter.addEventListener("change", () => { // Listens for category filter changes
-    renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
+  categoryFilter.addEventListener("change", () => {
+    renderProjects(searchInput.value, false, categoryFilter.value);
   });
 });
