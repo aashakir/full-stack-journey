@@ -178,7 +178,7 @@ footer.light-theme {
 }
 /* Style profile image: circular, centered */
 .profile-img {
-  max-width: 200px;
+  max-width: 150px;
   height: auto;
   border-radius: 50%;
   display: block;
