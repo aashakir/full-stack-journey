@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     { title: "AI Chatbot", description: "An AI-powered chatbot using Google AI Essentials." }
   ];
 
-  // Populate initial projects with delete buttons
+  // Populate initial projects with delete and edit buttons
   function renderProjects(filter = "", sorted = false) {
     projectList.innerHTML = ""; // Clear existing projects
     let filteredProjects = projects.filter(project =>
@@ -43,7 +43,12 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       deleteBtn.className = "delete-btn";
       deleteBtn.textContent = "Delete";
       deleteBtn.dataset.index = index; // Store index for deletion
+      const editBtn = document.createElement("button");
+      editBtn.className = "edit-btn";
+      editBtn.textContent = "Edit";
+      editBtn.dataset.index = index; // Store index for editing
       projectDiv.appendChild(deleteBtn);
+      projectDiv.appendChild(editBtn);
       projectList.appendChild(projectDiv);
     });
     localStorage.setItem("projects", JSON.stringify(projects)); // Save to localStorage
@@ -56,6 +61,15 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const index = event.target.dataset.index;
       projects.splice(index, 1); // Remove project from array
       renderProjects(searchInput.value); // Re-render with current search filter
+    } else if (event.target.classList.contains("edit-btn")) {
+      const index = event.target.dataset.index;
+      const project = projects[index];
+      const newTitle = prompt("Edit project title:", project.title);
+      const newDescription = prompt("Edit project description:", project.description);
+      if (newTitle && newDescription) {
+        projects[index] = { title: newTitle, description: newDescription };
+        renderProjects(searchInput.value); // Re-render with current search filter
+      }
     }
   });
 
