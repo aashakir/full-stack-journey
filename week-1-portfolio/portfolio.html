@@ -17,10 +17,11 @@
       <span class="hamburger"></span>
       <span class="hamburger"></span>
     </div>
-    <ul class="nav-menu">
+    <ul class="nav-menu" id="navMenu">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#blog">Blog</a></li>
     </ul>
   </nav>
   <main>
@@ -49,7 +50,42 @@
       <div id="messageError" class="error">Message is required and must be at least 10 characters</div>
       <button type="submit">Send</button>
     </form>
+    <div id="contactMap" style="height: 300px; width: 100%; margin-top: 20px;"></div>
     <div id="dynamicContent" class="dynamic-content"></div>
+    <section id="blog" class="blog-section">
+      <h2>Blog</h2>
+      <article>
+        <h3>My Journey into Full-Stack Development</h3>
+        <p>Published: July 2025 - Learn how I started my coding journey and the tools I use.</p>
+        <a href="https://medium.com/@yourusername/my-journey-into-full-stack-development" target="_blank">Read More</a>
+      </article>
+      <article>
+        <h3>Top 5 Tips for Web Developers</h3>
+        <p>Published: June 2025 - Practical advice for improving your coding skills.</p>
+        <a href="https://medium.com/@yourusername/top-5-tips-for-web-developers" target="_blank">Read More</a>
+      </article>
+    </section>
+    <section id="skills" class="skills-section">
+      <h2>Skills</h2>
+      <div class="skill">
+        <span>HTML/CSS</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 80%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 70%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>AI Development</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 60%;"></div>
+        </div>
+      </div>
+    </section>
     <div id="weatherSection">
       <h2>Current Weather</h2>
       <input type="text" id="cityInput" placeholder="Enter city name">
@@ -64,5 +100,6 @@
     <p>© 2025 Akhlaq</p>
   </footer>
   <script src="script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 </body>
 </html>
