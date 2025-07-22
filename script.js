@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
   const themeToggle = document.getElementById("themeToggle"); // Gets theme toggle button
   const searchInput = document.getElementById("searchInput"); // Gets search input
   const sortBtn = document.getElementById("sortBtn"); // Gets sort button
+  const categoryFilter = document.getElementById("categoryFilter"); // Gets category filter dropdown
 
   // Load theme from localStorage or default to light
   const savedTheme = localStorage.getItem("theme") || "light";
@@ -25,13 +26,27 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     { title: "AI Chatbot", description: "An AI-powered chatbot using Google AI Essentials.", category: "AI" }
   ];
 
+  // Populate category filter dropdown
+  function updateCategoryFilter() {
+    const categories = [...new Set(projects.map(project => project.category))];
+    categoryFilter.innerHTML = '<option value="">All Categories</option>';
+    categories.forEach(category => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      categoryFilter.appendChild(option);
+    });
+  }
+  updateCategoryFilter();
+
   // Populate initial projects with delete and edit buttons
-  function renderProjects(filter = "", sorted = false) {
+  function renderProjects(filter = "", sorted = false, category = "") {
     projectList.innerHTML = ""; // Clear existing projects
     let filteredProjects = projects.filter(project =>
-      project.title.toLowerCase().includes(filter.toLowerCase()) ||
+      (project.title.toLowerCase().includes(filter.toLowerCase()) ||
       project.description.toLowerCase().includes(filter.toLowerCase()) ||
-      project.category.toLowerCase().includes(filter.toLowerCase())
+      project.category.toLowerCase().includes(filter.toLowerCase())) &&
+      (category === "" || project.category === category)
     );
     if (sorted) {
       filteredProjects.sort((a, b) => a.title.localeCompare(b.title));
@@ -61,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     if (event.target.classList.contains("delete-btn")) {
       const index = event.target.dataset.index;
       projects.splice(index, 1); // Remove project from array
-      renderProjects(searchInput.value); // Re-render with current search filter
+      renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
+      updateCategoryFilter(); // Update category filter after deletion
     } else if (event.target.classList.contains("edit-btn")) {
       const index = event.target.dataset.index;
       const project = projects[index];
@@ -70,7 +86,8 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       const newCategory = prompt("Edit project category:", project.category);
       if (newTitle && newDescription && newCategory) {
         projects[index] = { title: newTitle, description: newDescription, category: newCategory };
-        renderProjects(searchInput.value); // Re-render with current search filter
+        renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
+        updateCategoryFilter(); // Update category filter after editing
       }
     }
   });
@@ -138,7 +155,8 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
     const category = prompt("Enter project category:");
     if (title && description && category) { // If all fields are provided
       projects.push({ title, description, category });
-      renderProjects(searchInput.value); // Re-render with current search filter
+      renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
+      updateCategoryFilter(); // Update category filter after adding
     }
   });
 
@@ -172,14 +190,18 @@ document.addEventListener("DOMContentLoaded", () => { // Runs when page is fully
       themeToggle.textContent = "Switch to Dark Theme";
       localStorage.setItem("theme", "light");
     }
-    renderProjects(searchInput.value); // Re-render projects with new theme and search filter
+    renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
   });
 
   searchInput.addEventListener("input", () => { // Listens for search input changes
-    renderProjects(searchInput.value); // Re-render projects with search filter
+    renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
   });
 
   sortBtn.addEventListener("click", () => { // Listens for sort button click
-    renderProjects(searchInput.value, true); // Re-render with sorting
+    renderProjects(searchInput.value, true, categoryFilter.value); // Re-render with sorting and current filters
+  });
+
+  categoryFilter.addEventListener("change", () => { // Listens for category filter changes
+    renderProjects(searchInput.value, false, categoryFilter.value); // Re-render with current filters
   });
 });
