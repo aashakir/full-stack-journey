@@ -1,105 +1,207 @@
+<!-- Declare the document as HTML5 -->
 <!DOCTYPE html>
+<!-- Start the HTML document and set the language to English -->
 <html lang="en">
+<!-- Start the head section with metadata -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akhlaq's Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <!-- Set the character encoding to UTF-8 for special characters -->
+    <meta charset="UTF-8">
+    <!-- Make the page responsive by adjusting to different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage to "Akhlaq's Portfolio" -->
+    <title>Akhlaq's Portfolio</title>
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to a modern font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- End the head section -->
 </head>
+<!-- Start the body section where the visible content goes -->
 <body>
-  <header>
-    <h1>Akhlaq's Portfolio</h1>
-    <button id="themeToggle" class="interactive-button">Toggle Theme</button>
-  </header>
-  <nav class="nav">
-    <div class="nav-toggle" id="navToggle">
-      <span class="hamburger"></span>
-      <span class="hamburger"></span>
-      <span class="hamburger"></span>
-    </div>
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#blog">Blog</a></li>
-    </ul>
-  </nav>
-  <main>
-    <img src="images/Profile.png" alt="Akhlaq's profile picture" loading="lazy">
-    <p>My full-stack web development journey</p>
-    <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a>
-    <a href="https://github.com/aashakir">GitHub</a>
-    <section id="projects" class="projects-section">
-      <h2>Projects</h2>
-      <input type="text" id="searchInput" placeholder="Search projects...">
-      <button id="sortBtn" class="interactive-button">Sort by Title</button>
-      <select id="categoryFilter">
-        <option value="">All Categories</option>
-      </select>
-      <div id="projectList" class="project-list"></div>
-    </section>
-    <form id="contactForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <div id="nameError" class="error">Name is required and must be at least 2 characters</div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <div id="emailError" class="error">Valid email is required (e.g., example@domain.com)</div>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      <div id="messageError" class="error">Message is required and must be at least 10 characters</div>
-      <button type="submit">Send</button>
-    </form>
-    <div id="contactMap" style="height: 300px; width: 100%; margin-top: 20px;"></div>
-    <div id="dynamicContent" class="dynamic-content"></div>
-    <section id="blog" class="blog-section">
-      <h2>Blog</h2>
-      <article>
-        <h3>My Journey into Full-Stack Development</h3>
-        <p>Published: July 2025 - Learn how I started my coding journey and the tools I use.</p>
-        <a href="https://medium.com/@yourusername/my-journey-into-full-stack-development" target="_blank">Read More</a>
-      </article>
-      <article>
-        <h3>Top 5 Tips for Web Developers</h3>
-        <p>Published: June 2025 - Practical advice for improving your coding skills.</p>
-        <a href="https://medium.com/@yourusername/top-5-tips-for-web-developers" target="_blank">Read More</a>
-      </article>
-    </section>
-    <section id="skills" class="skills-section">
-      <h2>Skills</h2>
-      <div class="skill">
-        <span>HTML/CSS</span>
-        <div class="progress">
-          <div class="progress-bar" style="width: 80%;"></div>
+    <!-- Start the header section with a modern logo and theme toggle -->
+    <header>
+        <!-- Display the portfolio title with a stylish effect -->
+        <h1 class="logo">Akhlaq's Portfolio</h1>
+        <!-- Add a button to switch between light and dark themes -->
+        <button id="themeToggle" class="theme-toggle">Toggle Theme</button>
+    <!-- End the header section -->
+    </header>
+    <!-- Start the navigation section for menu links -->
+    <nav class="nav">
+        <!-- Add a hamburger icon for mobile menu toggle -->
+        <div class="nav-toggle" id="navToggle">
+            <!-- Three lines to form the hamburger icon -->
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
         </div>
-      </div>
-      <div class="skill">
-        <span>JavaScript</span>
-        <div class="progress">
-          <div class="progress-bar" style="width: 70%;"></div>
-        </div>
-      </div>
-      <div class="skill">
-        <span>AI Development</span>
-        <div class="progress">
-          <div class="progress-bar" style="width: 60%;"></div>
-        </div>
-      </div>
-    </section>
-    <div id="weatherSection">
-      <h2>Current Weather</h2>
-      <input type="text" id="cityInput" placeholder="Enter city name">
-      <button id="getWeatherBtn" class="interactive-button">Get Weather</button>
-      <p id="weatherInfo"></p>
-    </div>
-    <button id="changeTextBtn" class="interactive-button">Change Text</button>
-    <button id="clearContentBtn" class="interactive-button">Clear Content</button>
-    <button id="addProjectBtn" class="interactive-button">Add Project</button>
-  </main>
-  <footer>
-    <p>© 2025 Akhlaq</p>
-  </footer>
-  <script src="script.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+        <!-- Start an unordered list for navigation links -->
+        <ul class="nav-menu" id="navMenu">
+            <!-- Link to the About section -->
+            <li><a href="#about">About</a></li>
+            <!-- Link to the Skills section -->
+            <li><a href="#skills">Skills</a></li>
+            <!-- Link to the Projects section -->
+            <li><a href="#projects">Projects</a></li>
+            <!-- Link to the Blog section -->
+            <li><a href="#blog">Blog</a></li>
+            <!-- Link to the Contact section -->
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    <!-- End the navigation section -->
+    </nav>
+    <!-- Start the main content section -->
+    <main>
+        <!-- Start the about section with a professional introduction -->
+        <section id="about" class="section">
+            <!-- Heading for the about section -->
+            <h2 class="section-title">About Me</h2>
+            <!-- Display the profile picture with lazy loading -->
+            <img src="images/Profile.png" alt="Akhlaq's profile picture" class="profile-img" loading="lazy">
+            <!-- Show a short professional bio -->
+            <p class="bio">I’m a passionate full-stack web developer with a focus on creating modern, user-friendly applications. My journey began in 2023, and I’ve since honed my skills in AI, web development, and business solutions.</p>
+            <!-- Links to social profiles -->
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/yourprofile" class="social-link">LinkedIn</a>
+                <a href="https://github.com/aashakir" class="social-link">GitHub</a>
+            </div>
+        </section>
+        <!-- Start the skills section -->
+        <section id="skills" class="section">
+            <!-- Heading for the skills section -->
+            <h2 class="section-title">My Skills</h2>
+            <!-- First skill with progress bar -->
+            <div class="skill">
+                <!-- Name of the skill -->
+                <span class="skill-name">HTML/CSS</span>
+                <!-- Progress bar container -->
+                <div class="progress">
+                    <!-- Progress bar set to 85% -->
+                    <div class="progress-bar" style="width: 85%;"></div>
+                </div>
+            </div>
+            <!-- Second skill with progress bar -->
+            <div class="skill">
+                <!-- Name of the skill -->
+                <span class="skill-name">JavaScript</span>
+                <!-- Progress bar container -->
+                <div class="progress">
+                    <!-- Progress bar set to 75% -->
+                    <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+            </div>
+            <!-- Third skill with progress bar -->
+            <div class="skill">
+                <!-- Name of the skill -->
+                <span class="skill-name">AI Development</span>
+                <!-- Progress bar container -->
+                <div class="progress">
+                    <!-- Progress bar set to 65% -->
+                    <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+            </div>
+        </section>
+        <!-- Start the projects section -->
+        <section id="projects" class="section">
+            <!-- Heading for the projects section -->
+            <h2 class="section-title">Projects</h2>
+            <!-- Input field to search projects -->
+            <input type="text" id="searchInput" placeholder="Search projects..." class="search-input">
+            <!-- Button to sort projects by title -->
+            <button id="sortBtn" class="action-btn">Sort by Title</button>
+            <!-- Dropdown to filter projects by category -->
+            <select id="categoryFilter" class="filter-select">
+                <!-- Default option for all categories -->
+                <option value="">All Categories</option>
+            </select>
+            <!-- Container for the list of projects -->
+            <div id="projectList" class="project-list"></div>
+            <!-- Button to add a new project -->
+            <button id="addProjectBtn" class="action-btn">Add Project</button>
+        </section>
+        <!-- Start the blog section -->
+        <section id="blog" class="section">
+            <!-- Heading for the blog section -->
+            <h2 class="section-title">Blog</h2>
+            <!-- First blog article -->
+            <article class="blog-post">
+                <!-- Title of the first blog post -->
+                <h3 class="post-title">My Journey into Full-Stack Development</h3>
+                <!-- Summary and date of the first post -->
+                <p class="post-meta">Published: July 2025 - Learn how I started my coding journey and the tools I use.</p>
+                <!-- Link to read more on Medium -->
+                <a href="https://medium.com/@yourusername/my-journey-into-full-stack-development" target="_blank" class="read-more">Read More</a>
+            </article>
+            <!-- Second blog article -->
+            <article class="blog-post">
+                <!-- Title of the second blog post -->
+                <h3 class="post-title">Top 5 Tips for Web Developers</h3>
+                <!-- Summary and date of the second post -->
+                <p class="post-meta">Published: June 2025 - Practical advice for improving your coding skills.</p>
+                <!-- Link to read more on Medium -->
+                <a href="https://medium.com/@yourusername/top-5-tips-for-web-developers" target="_blank" class="read-more">Read More</a>
+            </article>
+        </section>
+        <!-- Start the contact section -->
+        <section id="contact" class="section">
+            <!-- Heading for the contact section -->
+            <h2 class="section-title">Contact Me</h2>
+            <!-- Start the contact form -->
+            <form id="contactForm">
+                <!-- Label for the name input -->
+                <label for="name">Name:</label>
+                <!-- Input field for the user's name -->
+                <input type="text" id="name" name="name" required class="input-field">
+                <!-- Error message for name validation -->
+                <div id="nameError" class="error">Name is required and must be at least 2 characters</div>
+                <!-- Label for the email input -->
+                <label for="email">Email:</label>
+                <!-- Input field for the user's email -->
+                <input type="email" id="email" name="email" required class="input-field">
+                <!-- Error message for email validation -->
+                <div id="emailError" class="error">Valid email is required (e.g., example@domain.com)</div>
+                <!-- Label for the message input -->
+                <label for="message">Message:</label>
+                <!-- Textarea for the user's message -->
+                <textarea id="message" name="message" rows="4" required class="input-field"></textarea>
+                <!-- Error message for message validation -->
+                <div id="messageError" class="error">Message is required and must be at least 10 characters</div>
+                <!-- Submit button for the form -->
+                <button type="submit" class="action-btn">Send Message</button>
+            </form>
+            <!-- Container for the Google Map -->
+            <div id="contactMap" class="map"></div>
+            <!-- Container for dynamic content that changes -->
+            <div id="dynamicContent" class="dynamic-content"></div>
+        </section>
+        <!-- Start the weather section -->
+        <section id="weather" class="section">
+            <!-- Heading for the weather section -->
+            <h2 class="section-title">Current Weather</h2>
+            <!-- Input field for city name -->
+            <input type="text" id="cityInput" placeholder="Enter city name" class="input-field">
+            <!-- Button to get weather data -->
+            <button id="getWeatherBtn" class="action-btn">Get Weather</button>
+            <!-- Area to display weather information -->
+            <p id="weatherInfo" class="weather-info"></p>
+        </section>
+        <!-- Button to change the dynamic text -->
+        <button id="changeTextBtn" class="action-btn">Change Text</button>
+        <!-- Button to clear the dynamic content -->
+        <button id="clearContentBtn" class="action-btn">Clear Content</button>
+    <!-- End the main content section -->
+    </main>
+    <!-- Start the footer section at the bottom -->
+    <footer>
+        <!-- Display the copyright notice with current year -->
+        <p>© 2025 Akhlaq | Designed with Passion</p>
+    <!-- End the footer section -->
+    </footer>
+    <!-- Link to the internal JavaScript file for interactivity -->
+    <script src="script.js"></script>
+    <!-- Link to Google Maps API with a callback to initialize the map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+<!-- End the body section -->
 </body>
+<!-- End the HTML document -->
 </html>
