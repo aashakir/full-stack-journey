@@ -169,8 +169,6 @@
                 <!-- Submit button for the form -->
                 <button type="submit" class="action-btn">Send Message</button>
             </form>
-            <!-- Container for the Google Map -->
-            <div id="contactMap" class="map"></div>
             <!-- Container for dynamic content that changes -->
             <div id="dynamicContent" class="dynamic-content"></div>
         </section>
@@ -184,6 +182,37 @@
             <button id="getWeatherBtn" class="action-btn">Get Weather</button>
             <!-- Area to display weather information -->
             <p id="weatherInfo" class="weather-info"></p>
+        </section>
+        <!-- Start the news section -->
+        <section id="news" class="section">
+            <!-- Heading for the news section -->
+            <h2 class="section-title">Latest News</h2>
+            <!-- Input field to filter news by keyword or country -->
+            <input type="text" id="newsInput" placeholder="Enter keyword or country (e.g., 'tech' or 'us')" class="input-field">
+            <!-- Button to fetch news -->
+            <button id="getNewsBtn" class="action-btn">Get News</button>
+            <!-- Area to display news articles -->
+            <div id="newsList" class="news-list"></div>
+        </section>
+        <!-- Start the news categories section -->
+        <section id="newsCategories" class="section">
+            <!-- Heading for the news categories section -->
+            <h2 class="section-title">News by Category</h2>
+            <!-- Dropdown to select news category -->
+            <select id="categorySelect" class="filter-select">
+                <option value="">Select Category</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="general">General</option>
+                <option value="health">Health</option>
+                <option value="science">Science</option>
+                <option value="sports">Sports</option>
+                <option value="technology">Technology</option>
+            </select>
+            <!-- Button to fetch news by category -->
+            <button id="getCategoryNewsBtn" class="action-btn">Get Category News</button>
+            <!-- Area to display category news articles -->
+            <div id="categoryNewsList" class="news-list"></div>
         </section>
         <!-- Button to change the dynamic text -->
         <button id="changeTextBtn" class="action-btn">Change Text</button>
@@ -199,8 +228,6 @@
     </footer>
     <!-- Link to the internal JavaScript file for interactivity -->
     <script src="script.js"></script>
-    <!-- Link to Google Maps API with a callback to initialize the map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 <!-- End the body section -->
 </body>
 <!-- End the HTML document -->
