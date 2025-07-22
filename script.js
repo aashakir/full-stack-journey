@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
     navMenu.classList.toggle("active");
   });
 
+  // Google Maps initialization
+  function initMap() {
+    const location = { lat: 33.6844, lng: 73.0479 }; // Example: Islamabad, Pakistan
+    const map = new google.maps.Map(document.getElementById("contactMap"), {
+      center: location,
+      zoom: 12,
+    });
+    new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }
+
   // Load theme from localStorage or default to light
   const savedTheme = localStorage.getItem("theme") || "light";
   document.body.className = `${savedTheme}-theme`;
